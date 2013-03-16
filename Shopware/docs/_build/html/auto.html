@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Source Documentation &mdash; Python Shopware REST Interface 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python Shopware REST Interface 1.0 documentation" href="index.html" />
+    <link rel="prev" title="First Steps" href="firststeps.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="firststeps.html" title="First Steps"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Python Shopware REST Interface 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="source-documentation">
+<h1>Source Documentation<a class="headerlink" href="#source-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-Shopware.Client">
+<span id="shopware-client"></span><h2>Shopware.Client<a class="headerlink" href="#module-Shopware.Client" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Shopware.Client.Client">
+<em class="property">class </em><tt class="descclassname">Shopware.Client.</tt><tt class="descname">Client</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface to a shopware shop&#8217;s API</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>endpoint</strong> &#8211; Endpoint of your shopware API,
+e.g. <a class="reference external" href="http://www.myshop/api">http://www.myshop/api</a></li>
+<li><strong>user</strong> &#8211; Your backend user name</li>
+<li><strong>key</strong> &#8211; Your API key, configured for each backend user</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="Shopware.Client.Client.create">
+<tt class="descname">create</tt><big>(</big><em>ressource</em>, <em>data</em>, <em>params={}</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a ressource</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <p>Any existing API ressource.
+Default Shopware ressource are:</p>
+<blockquote>
+<div><ul>
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</div></blockquote>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>data</strong> &#8211; The data array for your ressource</li>
+<li><strong>params</strong> &#8211; Additional params to append to the request <em>URL</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Shopware.Client.Client.delete">
+<tt class="descname">delete</tt><big>(</big><em>ressource</em>, <em>id</em>, <em>useNumberAsId=False</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <dl class="docutils">
+<dt>Any existing API ressource. Default Shopware ressource are:</dt>
+<dd><ul class="first last">
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</dd>
+</dl>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>id</strong> &#8211; Id of an object to delete</li>
+<li><strong>useNumberAsId</strong> &#8211; <p>Optional: If set, the API is told not to search for the specified
+object by its primary ID, but by its human readable number.</p>
+<p>There might be some limitations: Your will not be able to delete
+articles this way, as articles itself are not identified by a
+number: The article details (main detail, variants) are identified
+by numbers. In order to prevend accidental delition of a whole
+article when only a variant was to be deleted, articles cannot be
+deleted by number.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Shopware.Client.Client.deleteByNumber">
+<tt class="descname">deleteByNumber</tt><big>(</big><em>ressource</em>, <em>id</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.deleteByNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method to delete a given ressource by its number</p>
+<p>Same as calling delete(ressource, id, useNumberAsId=True)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <dl class="docutils">
+<dt>Any existing API ressource. Default Shopware ressource are:</dt>
+<dd><ul class="first last">
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</dd>
+</dl>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>id</strong> &#8211; Id of an object to delete</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Shopware.Client.Client.read">
+<tt class="descname">read</tt><big>(</big><em>ressource</em>, <em>id=None</em>, <em>params={}</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a ressource</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <dl class="docutils">
+<dt>Any existing API ressource. Default Shopware ressource are:</dt>
+<dd><ul class="first last">
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</dd>
+</dl>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>id</strong> &#8211; Optional: If set, only the specified object will be feteched</li>
+<li><strong>params</strong> &#8211; Additional params to append to the request <em>URL</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Shopware.Client.Client.readByNumber">
+<tt class="descname">readByNumber</tt><big>(</big><em>ressource</em>, <em>id</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.readByNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method to read a given ressource by its number</p>
+<p>Same as calling read(ressource, id, useNumberAsId=True)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <dl class="docutils">
+<dt>Any existing API ressource. Default Shopware ressource are:</dt>
+<dd><ul class="first last">
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</dd>
+</dl>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>id</strong> &#8211; Id of an object to read</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Shopware.Client.Client.update">
+<tt class="descname">update</tt><big>(</big><em>ressource</em>, <em>id</em>, <em>data</em>, <em>params={}</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a given ressource</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <dl class="docutils">
+<dt>Any existing API ressource. Default Shopware ressource are:</dt>
+<dd><ul class="first last">
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</dd>
+</dl>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>id</strong> &#8211; Id of an object to update</li>
+<li><strong>params</strong> &#8211; Additional params to append to the request <em>URL</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Shopware.Client.Client.updateByNumber">
+<tt class="descname">updateByNumber</tt><big>(</big><em>ressource</em>, <em>id</em>, <em>data</em><big>)</big><a class="headerlink" href="#Shopware.Client.Client.updateByNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method to update a given ressource by its number.</p>
+<p>Same as calling update(ressource, id, data, useNumberAsId=True)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ressource</strong> &#8211; <dl class="docutils">
+<dt>Any existing API ressource. Default Shopware ressource are:</dt>
+<dd><ul class="first last">
+<li>articles</li>
+<li>customers</li>
+<li>categories</li>
+<li>media</li>
+<li>variants</li>
+<li>orders</li>
+</ul>
+</dd>
+</dl>
+<p>As the shopware API can be extended by plugins, any of those
+ressource might work as well</p>
+</li>
+<li><strong>id</strong> &#8211; Id of an object to update</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Shopware.Request">
+<span id="shopware-request"></span><h2>Shopware.Request<a class="headerlink" href="#module-Shopware.Request" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="Shopware.Request.Error">
+<em class="property">exception </em><tt class="descclassname">Shopware.Request.</tt><tt class="descname">Error</tt><a class="headerlink" href="#Shopware.Request.Error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base error class for the API</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="Shopware.Request.Request">
+<em class="property">class </em><tt class="descclassname">Shopware.Request.</tt><tt class="descname">Request</tt><big>(</big><em>endpoint</em>, <em>user</em>, <em>key</em><big>)</big><a class="headerlink" href="#Shopware.Request.Request" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Request class handled the REST logic</p>
+<p>Usually there is <strong>no need</strong> to have an instance of this class other than
+Shopware.Client().</p>
+<dl class="method">
+<dt id="Shopware.Request.Request.constructUrl">
+<tt class="descname">constructUrl</tt><big>(</big><em>ressource</em>, <em>id=None</em>, <em>params=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#Shopware.Request.Request.constructUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a url from the known endpoint, the given ressource and
+the given params</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ressource</strong> &#8211; The api ressource</li>
+<li><strong>params</strong> &#8211; List of additional HTTP params</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The desired url as string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="Shopware.Request.StatusError">
+<em class="property">exception </em><tt class="descclassname">Shopware.Request.</tt><tt class="descname">StatusError</tt><big>(</big><em>status</em>, <em>response</em>, <em>content</em><big>)</big><a class="headerlink" href="#Shopware.Request.StatusError" title="Permalink to this definition">¶</a></dt>
+<dd><p>General status error</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Source Documentation</a><ul>
+<li><a class="reference internal" href="#module-Shopware.Client">Shopware.Client</a></li>
+<li><a class="reference internal" href="#module-Shopware.Request">Shopware.Request</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="firststeps.html"
+                        title="previous chapter">First Steps</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/auto.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="firststeps.html" title="First Steps"
+             >previous</a> |</li>
+        <li><a href="index.html">Python Shopware REST Interface 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Daniel Nögel.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
