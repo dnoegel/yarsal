@@ -101,6 +101,8 @@ Run a lot of requests:
                 data=article
             )
 
+**Keep in mind** Using multiple threads might compensate the latency of the HTTP requests but therefore will increase the load of your server. Therefor 2-3 threads seems like a good value for the beginning - depending on your server.
+
 ## Request types
 The interface is quite generic, so you can use any resource of the Shopware API. Additional resources, offered by 3rd party plugins, are most probably also supported.
 
