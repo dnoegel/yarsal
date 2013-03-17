@@ -19,7 +19,7 @@ class Example(object):
         self.successCounter = 0
         self.errorCounter = 0
 
-
+        ## Create a threaded client with the default of 3 threads
         self.client = ThreadedClient(
             "http://shopware.dev/api",
             "demo",
@@ -27,11 +27,17 @@ class Example(object):
             numThreads=3
         )
 
+        ## Set default callbacks
         self.client.setDefaultSuccessCallback(self.successCallback)
         self.client.setDefaultErrorCallback(self.errorCallback)
 
     def successCallback(self, task):
+        """Callback for success operations.
+
+        :param task: The task object of the task that was successful
+        """
         self.successCounter += 1
+
         print("{} articles created in {} seconds, {} errorrs. {} articles/second".format(
             self.successCounter,
             round(time.time()-self.start, 2),
@@ -41,11 +47,20 @@ class Example(object):
 
 
     def errorCallback(self, exception, task):
-        raise exception
+        """Callback for errors
+
+        :param exception: The exception that occurred
+        :param task: The task that failed
+        """
+
+        print("There was an error updating: Resource: {}, Request: {}".format(
+            task.resource,
+            task.request
+        ))
         self.errorCounter += 1
 
     def benchmark(self):
-        import time
+        """Import a lot of articles"""
 
         self.start = time.time()
 

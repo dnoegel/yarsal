@@ -1,8 +1,11 @@
-# Python interface to the Shopware API
+# Yet another ridiculously slim API layer" 
 
-This tiny, inofficial interface to the Shopware API allows you to access the REST API via Python. 
+This is an inofficial, very basic interface to the Shopware REST API. It offers a *SimpleClient* which basically wraps the underlying HTTP requests and a *ThreadedClient* which lets you process your tasks with multiple HTTP requests at the same time.
 
 ## How to use
+### SimpleClient
+The SimpleClient basically offers some convenience functions wrapped around the underlying HTTP library.
+
 Include the library:
 
         from Shopware.Client import Client
@@ -33,6 +36,70 @@ Fire a request:
             }
         }
         result = self.client.create("articles", data=article)
+
+### ThreadedClient
+The ThreadedClient creates a queue for your tasks and a given number of worker threads eagerly waiting for the queue to be filled. 
+
+In order to know if a task succeeded (or not), you are able to define callback-functions. If you want to have global callback functions for all your task, make use of the methods **setDefaultSuccessCallback** and **setDefaultErrorCallback** of the ThreadedClient. If you want to have specific callback functions (e.g. a callback function for customers, a callback function for articles...) you can also define callbacks for each request via the **push** method of ThreadedClient.
+
+Please keep in mind, that the callback functions are triggered by the worker thread, that handled the given task. For that reason, you might want to implement additional logic, if your further logic is not thread safe. Queues are a good idea here.
+
+Include the library:
+
+        from Shopware.Client import ThreadedClient
+
+Get an instance of the client:
+
+        client = ThreadedClient(
+            "http://shopware.dev/api",
+            "demo",
+            "demo",
+            numThreads=3
+        )
+
+Define Callbacks:
+
+        client.setDefaultSuccessCallback(successCallback)
+        client.setDefaultErrorCallback(errorCallback)
+
+Implement Callbacks:
+
+    def successCallback(task):
+        print(task.data['mainDetail']['number'])
+
+    def errorCallback(exception, task):
+        print("There was an error updating: Resource: {}, Request: {}".format(
+            task.resource,
+            task.request
+        ))
+
+Run a lot of requests:
+
+        todo = 100000
+
+        for i in range(todo):
+            number = "sw-{}".format(time.time())
+            article = {
+                "name": "My first article",
+                "description": "I am so proud of it o_Ô",
+                "tax": "19",
+                "mainDetail": {
+                    "number": number,
+                    "active": True,
+                    "prices": [
+                        {
+                        "priceGroup": 'EK',
+                        "price": 999
+                        }
+                    ]
+                }
+            }
+
+            result = self.client.push(
+                "articles",
+                "POST",
+                data=article
+            )
 
 ## Request types
 The interface is quite generic, so you can use any resource of the Shopware API. Additional resources, offered by 3rd party plugins, are most probably also supported.
