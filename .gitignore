@@ -1,1 +1,7 @@
-Shopware/__pycache__*
+Shopware/__pycache__/
+.doctrees/
+*~
+*.nja
+*.swp
+.buildinfo
+Shopware/.buildinfo

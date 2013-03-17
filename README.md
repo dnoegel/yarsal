@@ -8,11 +8,11 @@ The SimpleClient basically offers some convenience functions wrapped around the 
 
 Include the library:
 
-        from Shopware.Client import Client
+        from Shopware.Client import SimpleClient
 
 Get an instance of the client:
 
-        client = Client(
+        client = SimpleClient(
             "http://shopware.dev/api",
             "demo",
             "demo"
