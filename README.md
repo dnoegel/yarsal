@@ -1,4 +1,4 @@
-# Yet another ridiculously slim API layer" 
+# Yet another ridiculously slim API layer 
 
 This is an inofficial, very basic interface to the Shopware REST API. It offers a *SimpleClient* which basically wraps the underlying HTTP requests and a *ThreadedClient* which lets you process your tasks with multiple HTTP requests at the same time.
 
